@@ -14,6 +14,7 @@
     --light-grey: #e2e6ea;
     --mid: #141618;
     --silver: #9ba3ad;
+    --nav-height: 78px; 
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -52,7 +53,10 @@
   }
   a:hover ~ .cursor, button:hover ~ .cursor { width: 20px; height: 20px; }
 
-  /* NAV */
+  nav{
+  min-height: 110px;
+}
+
   nav {
     position: fixed; top: 0; left: 0; right: 0;
     z-index: 100;
@@ -64,9 +68,51 @@
     border-bottom: 1px solid rgba(255,255,255,0.05);
   }
 
+nav .nav-logo img{
+  height: 60px !important;
+  width: auto !important;
+  max-height: none !important;
+}
+
+nav{
+  min-height: 0;            /* don’t force nav taller */
+  height: 130px;             /* pick your desired bar height */
+  padding: 0 60px;          /* remove vertical padding so height stays tight */
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(12px);
+  background: rgba(10,10,10,0.6);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* make the logo “float” so it doesn’t change nav height */
+.nav-logo{
+  position: relative;
+  height: 100%;             /* lets us anchor inside the bar */
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo img{
+  height: 60px;            /* big logo */
+  width: auto;
+  object-fit: contain;
+  display: block;
+
+  position: absolute;       /* key: removes it from layout flow */
+  left: 0;
+  top: 70%;
+  transform: translateY(-50%);
+}
+
+
   .nav-logo {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
+    font-size: 38px;
     font-weight: 400;
     letter-spacing: 0.12em;
     color: var(--white);
@@ -77,6 +123,10 @@
   .nav-links {
     display: flex; gap: 44px; list-style: none;
   }
+  .nav-links {
+    margin-top: 50px;  /* adjust 8–18px */
+}
+
   .nav-links a {
     font-size: 11px;
     letter-spacing: 0.18em;
@@ -96,6 +146,7 @@
     padding: 10px 24px;
     text-decoration: none;
     transition: all 0.3s;
+    transform: translateY(17px);
   }
   .nav-cta:hover { background: var(--warm); color: var(--black); }
 
@@ -409,7 +460,7 @@
 
   .product-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
+    font-size: 38px;
     font-weight: 400;
   }
 
@@ -506,7 +557,7 @@
 
   .designer-card h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
+    font-size: 38px;
     font-weight: 400;
     margin-bottom: 14px;
   }
@@ -559,7 +610,8 @@
     gap: 60px;
   }
 
-  .footer-brand .nav-logo {
+  .footer-brand ..nav-logo img { width: 140px; height: auto; }
+  .nav-logo {
     display: block; margin-bottom: 20px;
     font-size: 20px;
   }
